@@ -21,5 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')) # Include URLs from the home app
+    path('', include('home.urls')), # Include URLs from the home app
+    path('smart/', include('notes.urls')),
+    
 ]

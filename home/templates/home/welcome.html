@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartNotes</title>
-   
-
-</head>
+{%extends "base.html"%}
 
 
-<body>
-    <header>
+
+{% block content %}
+
+ 
+ 
+
+    <title>{{title}}</title>
+
         <h1>Welcome to SmartNotes!</h1>
-    </header>
-    <p>Today is {{today}}</p>
-    <main>
-        <p>We're glad to have you here. Explore our content and enjoy your stay!</p>
-    </main>
+
+    <p>Date is {{today}}</p>
+    
+    <p>We're glad to have you here. Explore our content and enjoy your stay!</p>
+    <a href="{% url 'notes.list'%}", class="btn btn-primary">Check Out These SmartNotes!</a>
+
+    <h1 class="my5 text-center">Advantages of Using SmartNotes</h1>
+    {% include "home/advantages.html" with title="Advantages"  only %}
+   
     <footer>
         <p>&copy; 2025 Our Website. All rights reserved.</p>
     </footer>
 
 
-</body>
-
-</html>
+{% endblock %}

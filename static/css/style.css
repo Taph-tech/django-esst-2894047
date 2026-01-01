@@ -1,0 +1,9 @@
+/* Hide field-specific error lists from form.as_p */
+ul.errorlist {
+    display: none !important;
+}
+
+/* Keep non-field errors visible */
+.nonfield {
+    display: block !important;
+}

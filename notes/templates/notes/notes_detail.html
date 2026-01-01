@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+
+{% block content%}
+
+    <div class= "border round">
+    <h1 class ="my5">{{ note.title }}{%if note.is_public %}<span class="badge bg-secondary">Public</span> {%endif%}</h1>
+    <p>{{ note.text_field }}</p>
+    </div>
+    <p>{{ note.likes }} Likes</p>
+    <form method="POST" class="d-inline" action="{% url 'notes.add_like' pk=note.id%}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-secondary my4">Add Like</button>
+    
+    </form >
+    <form method="POST" class="d-inline" action="{% url 'notes.change_visibility' pk=note.id%}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-secondary my4">
+            {% if note.is_public %}
+                Make Private
+            {% else %}
+                Make Public
+            {% endif %}
+        </button>
+    </form>
+
+
+    <a href="{% url 'notes.list'%}" class = "btn btn-secondary my-4">Back</a>
+    <a href="{% url 'notes.update' pk=note.id%}" class = "btn btn-secondary my-4">Edit</a>
+    <a href="{% url 'notes.delete' pk=note.id%}" class = "btn btn-danger my-4">Delete</a>
+{%endblock%}
